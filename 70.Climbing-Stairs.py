@@ -19,15 +19,23 @@
 # 2. 1 step + 2 steps
 # 3. 2 steps + 1 step
 
-#第一步占死了 爬一层台阶还是爬两层台阶 再加就好了
+# def climbStairs(n):
+#     if n == 1:
+#         return 1
+#     if n == 2:
+#         return 2
+#     bottom_up = [None] * (n+1)
+#     bottom_up[1] = 1
+#     bottom_up[2] = 2
+#     for i in range(3, n+1):
+#         bottom_up[i] = bottom_up[i-1] + bottom_up[i-2]
+#     return bottom_up[n]
+
+
 def climbStairs(n):
-    if n == 1:
-        return 1
-    if n == 2:
-        return 2
-    bottom_up = [None] * (n+1)
-    bottom_up[1] = 1
-    bottom_up[2] = 2
-    for i in range(3, n+1):
-        bottom_up[i] = bottom_up[i-1] + bottom_up[i-2]
-    return bottom_up[n]
+    one, two = 1,1
+    for i in range(n-1):
+        temp = one
+        one = one + two
+        two = temp
+    return one
